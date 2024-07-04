@@ -1,0 +1,52 @@
+name: deploy  # name任意
+
+on:  # 当执行push操作时，触发该action
+  push:
+    branches:
+    - main
+
+env:
+  GIT_USER: Estrellajer  # git的用户名
+  GIT_EMAIL: 1207468519@qq.com  # git的邮箱
+  THEME_REPO: anzhiyu-c/hexo-theme-anzhiyu  # 主题
+  THEME_BRANCH: main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest  # 环境，使用Ubuntu
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: main
+
+      - name: 安装 Node  # 这个格式是正确的，使用build那个会报错
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20.x"
+
+      - name: 配置 环境变量
+        env:
+          HEXO_DEPLOY_PRI: ${{secrets.HEXO_DEPLOY_PRI}}
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$HEXO_DEPLOY_PRI" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          git config --global user.name $GIT_USER
+          git config --global user.email $GIT_EMAIL
+      - name: 安装 Hexo
+        run: |
+          npm install hexo-cli -g
+          npm install
+      
+      - name: 生成静态文件
+        run: |
+          rm -rf .deploy_git  # .deploy_git报错遂添加此行和下一行
+          npm install hexo-deployer-git --save
+          hexo clean
+          hexo generate
+      - name: 部署到Github page
+        run: |
+          hexo deploy
