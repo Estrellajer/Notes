@@ -7,5 +7,3 @@ public/
 .deploy*/
 _multiconfig.yml
 .obsidian/workspace.json
-github-deploy-key
-github-deploy-key.pub
