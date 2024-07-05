@@ -2,7 +2,8 @@
   "editor:toggle-source": [
     {
       "modifiers": [
-        "Mod"
+        "Mod",
+        "Shift"
       ],
       "key": "/"
     }
