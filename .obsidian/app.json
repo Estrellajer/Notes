@@ -3,7 +3,9 @@
     "node_modules/",
     "themes/",
     "scaffolds/",
-    "public/"
+    "public/",
+    "themes/",
+    "scaffolds/"
   ],
   "newFileLocation": "folder",
   "newFileFolderPath": "source/_posts",
