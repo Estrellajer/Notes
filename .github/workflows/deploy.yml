@@ -40,6 +40,11 @@ jobs:
         run: |
           npm install hexo-cli -g
           npm install
+
+      - name: 清除并重新安装依赖项
+        run: |
+          rm -rf node_modules
+          npm install --force
       
       - name: 生成静态文件
         run: |
