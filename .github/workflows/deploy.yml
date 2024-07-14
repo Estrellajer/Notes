@@ -36,15 +36,10 @@ jobs:
           ssh-keyscan github.com >> ~/.ssh/known_hosts
           git config --global user.name $GIT_USER
           git config --global user.email $GIT_EMAIL
-
       - name: 安装 Hexo
         run: |
           npm install hexo-cli -g
           npm install
-      
-      - name: 修改 Nunjucks 变量定界符
-        run: |
-          node ./scripts/fix-nunjucks.js
       
       - name: 生成静态文件
         run: |
@@ -52,7 +47,6 @@ jobs:
           npm install hexo-deployer-git --save
           hexo clean
           hexo generate
-
       - name: 部署到Github page
         run: |
           hexo deploy
