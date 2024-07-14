@@ -1,3 +1,7 @@
+---
+categories:
+  - 杂谈
+---
  --- 
  title: BUPT AI大三下生存指南
  date: 2024-07-04 11:29:18 
