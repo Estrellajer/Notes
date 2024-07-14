@@ -39,6 +39,10 @@ jobs:
       - name: 安装 Hexo
         run: |
           npm install hexo-cli -g
+          npm install
+
+      - name: 清除并重新安装依赖项
+        run: |
           rm -rf node_modules
           npm install --force
       
