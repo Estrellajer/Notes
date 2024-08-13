@@ -26,6 +26,9 @@ jobs:
         with:
           node-version: "20.x"
 
+      - name: Setup pandoc
+        uses: nikeee/setup-pandoc@v1
+
       - name: 配置 环境变量
         env:
           HEXO_DEPLOY_PRI: ${{secrets.HEXO_DEPLOY_PRI}}
