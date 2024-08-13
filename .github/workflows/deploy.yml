@@ -8,7 +8,7 @@ on:  # 当执行push操作时，触发该action
 env:
   GIT_USER: Estrellajer  # git的用户名
   GIT_EMAIL: 1207468519@qq.com  # git的邮箱
-  THEME_REPO: anzhiyu-c/hexo-theme-anzhiyu  # 主题
+  THEME_REPO: fluid-dev/hexo-theme-fluid  # 主题
   THEME_BRANCH: main
 
 jobs:
